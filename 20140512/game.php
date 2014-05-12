@@ -6,7 +6,7 @@
  */
 class Game
 {
-  private $teacher_names = '';
+  private $teacher_names = array();
   private $students = 100;
 
   /**
