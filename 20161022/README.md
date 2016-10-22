@@ -4,7 +4,7 @@
 - `ol`
 - `dl`
 
-## CSS复用
+## CSS复用性
 
 ```html
 <button type="button" class="btn">Button</button>
@@ -35,7 +35,7 @@
 }
 ```
 
-## jQuery - AJAX
+## jQuery.ajax
 
 ```html
 <ul id="list">
@@ -47,31 +47,37 @@
 ```
 
 ```js
-var url = '/api/getItems';
+$(function() {
+  var url = '/api/getItems';
 
-function renderItems(data) {
-  var output = '';
+  function renderItems(data) {
+    var output = '';
 
-  // 1. for循环
-  // for (var i = 0, len = data.length; i < len; i++) {
-  //   output += '<li data-id="' + data[i].id + '">' + data[i].name + '</li>';
-  // }
+    // 1. for循环
+    // for (var i = 0, len = data.length; i < len; i++) {
+    //   output += '<li data-id="' + data[i].id + '">' + data[i].name + '</li>';
+    // }
 
-  // 2. forEach循环
-  data.forEach(function(item) {
-    output += '<li data-id="' + item.id + '">' + item.name + '</li>';
-  });
+    // 2. forEach循环
+    data.forEach(function(item) {
+      output += '<li data-id="' + item.id + '">' + item.name + '</li>';
+    });
 
-  $('#list').html(output);
-}
+    $('#list').html(output);
+  }
 
-$('#btn-test').on('click', function() {
-  $.ajax({
-    url: url,
-    type: 'GET',
-    dataType: 'json'
-  }).done(function(response) {
-    renderItems(response);
+  $('#btn-test').on('click', function() {
+    $.ajax({
+      url: url,
+      type: 'GET',
+      dataType: 'json'
+    }).done(function(response) {
+      if (response.code == 200) {
+        renderItems(response.data);
+      } else {
+        alert(response.message);
+      }
+    });
   });
 });
 ```
