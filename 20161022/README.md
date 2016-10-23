@@ -87,7 +87,8 @@ $(function() {
 __服务端__
 
 1. `cd demo`
-2. `node server/index.js`
+2. `npm install`
+3. `node server/index.js`
 
 __客户端__
 
