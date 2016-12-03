@@ -1,0 +1,48 @@
+<!doctype html>
+<html ng-app="myApp">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Angular Validation</title>
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="/demo/main.css">
+</head>
+
+<body ng-controller="index">
+  <div class="container">
+    <div class="page-header">
+      <form name="Form6" id="form6">
+        <fieldset>
+          <div class="m-b-20">
+            <legend>Form (ng-repeat)</legend>
+            <label>Required</label>
+            <div ng-repeat="a in form6.required">
+              <input type="text" class="form-control m-b-20" name="emailRequiredOnly{{$index}}" ng-model="a.required" validator="required" message-id="emailRequiredOnly{{$index}}" />
+              <span id="emailRequiredOnly{{$index}}"></span>
+            </div>
+            <blockquote ng-non-bindable>
+              <label>In name attribute we have to use {{$index}}
+                <cite>eg. emailRequiredOnly{{$index}}</cite>
+              </label>
+            </blockquote>
+          </div>
+          <div class="btn-group" role="group">
+            <button class="btn btn-success" validation-submit="Form6">Submit</button>
+            <button class="btn btn-danger" validation-reset="Form6">Reset</button>
+            <button class="btn btn-info" ng-disabled="!form6.checkValid(Form6)">checkValid = {{ form6.checkValid(Form6) }}</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <script src="/node_modules/angular/angular.min.js"></script>
+  <script src="/node_modules/angular-validation/dist/angular-validation.js"></script>
+  <script src="/node_modules/angular-validation/dist/angular-validation-rule.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/controller.js"></script>
+</body>
+
+</html>

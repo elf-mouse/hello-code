@@ -1,0 +1,47 @@
+<!doctype html>
+<html ng-app="myApp">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Angular Validation</title>
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="/demo/main.css">
+</head>
+
+<body ng-controller="index">
+  <div class="container">
+    <div class="page-header">
+      <form name="Form" id="form1">
+        <fieldset>
+          <legend>Form ($watch)</legend>
+          <div style="margin-bottom:20px;">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="emailWatch" ng-model="form.email" validator="email" email-error-message="Error Email" email-success-message="Good Email" message-id="emailWatch" id="email" />
+            <span id="emailWatch"></span>
+            <label for="number">Number</label>
+            <input type="text" class="form-control" name="numberWatch" ng-model="form.number" validator="number" email-error-message="Error Number" email-success-message="Good Number" , message-id="numberWatch" id="number" />
+            <span id="numberWatch"></span>
+          </div>
+          <div class="btn-group" role="group">
+            <button class="btn btn-primary" ng-click="showcodewatch = !showcodewatch">
+              <span ng-hide="showcodewatch">Show Code</span>
+              <span ng-show="showcodewatch">Hide Code</span>
+            </button>
+          </div>
+          <pre ng-show="showcodewatch"><code class="html">&lt;!-- default valid-method is watch -->
+&lt;input type="text" name="emailBlur" ng-model="form.email" validator="email"/></code></pre>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <script src="/node_modules/angular/angular.min.js"></script>
+  <script src="/node_modules/angular-validation/dist/angular-validation.js"></script>
+  <script src="/node_modules/angular-validation/dist/angular-validation-rule.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/controller.js"></script>
+</body>
+
+</html>

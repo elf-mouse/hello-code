@@ -1,0 +1,44 @@
+<!doctype html>
+<html ng-app="myApp">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Angular Validation</title>
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="/demo/main.css">
+</head>
+
+<body ng-controller="index">
+  <div class="container">
+    <div class="page-header">
+      <form name="Form" id="form2">
+        <fieldset>
+          <div class="m-b-20">
+            <legend>Form ($blur)</legend>
+            <label>Name</label>
+            <input class="form-control" type="text" name="requireBlur" ng-model="form2.required" validator="required" valid-method="blur" />
+            <label>Email</label>
+            <input class="form-control" type="text" name="emailBlur" ng-model="form2.email" validator="email" valid-method="blur" />
+          </div>
+          <div class="btn-group" role="group">
+            <button class="btn btn-primary" ng-click="showcodeblur = !showcodeblur">
+              <span ng-hide="showcodeblur">Show Code</span>
+              <span ng-show="showcodeblur">Hide Code</span>
+            </button>
+          </div>
+          <pre ng-show="showcodeblur"><code class="html">&lt;input type="text" name="emailBlur" ng-model="form.email" validator="email" <span data-tooltip aria-haspopup="true" class="has-tip" title="valid method type set to blur">valid-method="blur"</span>/></code></pre>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <script src="/node_modules/angular/angular.min.js"></script>
+  <script src="/node_modules/angular-validation/dist/angular-validation.js"></script>
+  <script src="/node_modules/angular-validation/dist/angular-validation-rule.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/controller.js"></script>
+</body>
+
+</html>

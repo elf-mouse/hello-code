@@ -1,0 +1,50 @@
+<!doctype html>
+<html ng-app="myApp">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Angular Validation</title>
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="/demo/main.css">
+</head>
+
+<body ng-controller="index">
+  <div class="container">
+    <div class="page-header">
+      <form name="Form3" id="form3">
+        <fieldset>
+          <div class="m-b-20">
+            <legend>Form ($submit with callback)</legend>
+            <label>Required</label>
+            <input class="form-control" type="text" name="requireSubmit" ng-model="form3.required" validator="required" valid-method="submit" message-id="requireSubmit" />
+            <span id="requireSubmit"></span>
+            <label>Url</label>
+            <input class="form-control" type="text" name="urlSubmit" ng-model="form3.url" validator="url" valid-method="submit" message-id="urlSubmit" />
+            <span id="urlSubmit"></span>
+            <label>Email</label>
+            <input class="form-control" type="text" name="emailSubmit" ng-model="form3.email" validator="email" valid-method="submit" message-id="emailSubmit" />
+            <span id="emailSubmit"></span>
+            <label>Number</label>
+            <input class="form-control" type="text" name="numberSubmit" ng-model="form3.number" validator="number" valid-method="submit" message-id="numberSubmit" />
+            <span id="numberSubmit"></span>
+          </div>
+          <div class="btn-group" role="group">
+            <button class="btn btn-success" ng-click="form3.submit(Form3)">Submit</button>
+            <button class="btn btn-danger" ng-click="form3.reset(Form3)">Reset</button>
+            <button class="btn btn-info" ng-disabled="!form3.checkValid(Form3)">checkValid = {{ form3.checkValid(Form3) }}</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <script src="/node_modules/angular/angular.min.js"></script>
+  <script src="/node_modules/angular-validation/dist/angular-validation.js"></script>
+  <script src="/node_modules/angular-validation/dist/angular-validation-rule.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/controller.js"></script>
+</body>
+
+</html>

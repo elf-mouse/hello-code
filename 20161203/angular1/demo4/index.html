@@ -1,0 +1,57 @@
+<!doctype html>
+<html ng-app="myApp">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Angular Validation</title>
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="/demo/main.css">
+</head>
+
+<body ng-controller="index">
+  <div class="container">
+    <div class="page-header">
+      <form name="Form4" id="form4">
+        <fieldset>
+          <div class="m-b-20">
+            <legend>Form (Additions validation)</legend>
+            <div class="input-group m-b-20" style="width: 50%;">
+              <input type="text" class="form-control" validator="huei" name="huei" ng-model="form4.huei" placeholder="It's must be 'Huei Tan'" message-id="huei">
+              <span class="input-group-addon">With <a href="https://github.com/huei90/angular-validation#custom-function-huei" target="_blank">Function</a> </span>
+            </div>
+            <span id="huei"></span>
+            <div class="input-group m-b-20" style="width: 50%;">
+              <input type="text" class="form-control" validator="huei" name="noMsg" ng-model="form4.noMsg" no-validation-message="true" placeholder="It's must be 'Huei Tan'" message-id="noMsg">
+              <span class="input-group-addon">
+                            <span ng-if="!Form4.noMsg.$valid">type: Huei Tan</span>
+              <span ng-if="Form4.noMsg.$valid"><a href="https://github.com/huei90/angular-validation#no-validation-message" target="_blank">no-validation-message</a></span>
+              </span>
+            </div>
+            <div class="input-group m-b-20" style="width: 50%;">
+              <input type="text" class="form-control" validator="huei" name="canChange" huei-error-message="{{ form4.changeErrorMsg }}" ng-model="form4.canChange" placeholder="Type Wrong !!" message-id="canChange">
+              <span class="input-group-addon">
+                            <span ng-if="!form4.show"><a href="javascript:void(0);" ng-click="form4.changeMsg();form4.show = true;">Change Error Msg</a></span>
+              <span ng-if="form4.show">Type Again <a href="https://github.com/huei90/angular-validation/blob/master/demo/demo.js#L45" target="_blank">#</a></span>
+              </span>
+            </div>
+            <span id="canChange"></span>
+            <input type="text" class="form-control m-b-20" validator="range" name="range" ng-model="form4.range" placeholder="number 5~10" min="5" max="10" message-id="range">
+            <span id="range"></span>
+            <input type="text" class="form-control m-b-20" validator="required, range" name="multiple" ng-model="form4.multiple" placeholder='number 5~10 with required (validator="required, range")' min="5" max="10" message-id="multiple">
+            <span id="multiple"></span>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <script src="/node_modules/angular/angular.min.js"></script>
+  <script src="/node_modules/angular-validation/dist/angular-validation.js"></script>
+  <script src="/node_modules/angular-validation/dist/angular-validation-rule.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/controller.js"></script>
+</body>
+
+</html>

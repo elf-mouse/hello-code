@@ -1,0 +1,71 @@
+<!doctype html>
+<html ng-app="myApp">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Angular Validation</title>
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="/demo/main.css">
+</head>
+
+<body ng-controller="index">
+  <div class="container">
+    <div class="page-header">
+      <form name="Form5" id="form5">
+        <fieldset>
+          <div class="m-b-20">
+            <legend>Form ($submit-only)</legend>
+            <label>Required</label>
+            <input type="text" class="form-control m-b-20" name="emailRequiredOnly" ng-model="form5.required" validator="required" valid-method="submit-only" message-id="emailRequiredOnly" />
+            <span id="emailRequiredOnly"></span>
+            <label>Email</label>
+            <input type="text" class="form-control m-b-20" name="emailSubmitOnly" ng-model="form5.email" validator="email" valid-method="submit-only" message-id="emailSubmitOnly" />
+            <span id="emailSubmitOnly"></span>
+            <label>Lucky Number</label>
+            <select class="form-control" name="selectBlur" ng-model="form5.select" validator="required" message-id="selectBlur">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+            <span id="selectBlur"></span>
+            <div class="row">
+              <div class="checkbox">
+                <label for="checkbox1">
+                  <input id="checkbox1" type="checkbox" name="checkBlur1" ng-model="form5.check1" validator="required" validation-group="checkBlur" /> Checkbox 1
+                </label>
+              </div>
+              <div class="checkbox">
+                <label for="checkbox2">
+                  <input id="checkbox2" type="checkbox" name="checkBlur2" ng-model="form5.check2" validator="required" validation-group="checkBlur" /> Checkbox 2
+                </label>
+              </div>
+            </div>
+            <span id="checkBlur"></span>
+            <div class="radio">
+              <input id="radio1" type="radio" name="radioBlur" ng-model="form5.radio" validator="required" message-id="checkRadio" value="1" />
+              <label for="radio1">Radio 1</label>
+            </div>
+            <span id="checkRadio"></span>
+          </div>
+          <div class="btn-group" role="group">
+            <button class="btn btn-success" ng-click="form5.submit(Form5)">Submit</button>
+            <button class="btn btn-danger" ng-click="form5.reset(Form5)">Reset</button>
+            <button class="btn btn-info" ng-disabled="!form5.checkValid(Form5)">checkValid = {{ form5.checkValid(Form5) }}</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <script src="/node_modules/angular/angular.min.js"></script>
+  <script src="/node_modules/angular-validation/dist/angular-validation.js"></script>
+  <script src="/node_modules/angular-validation/dist/angular-validation-rule.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/controller.js"></script>
+</body>
+
+</html>

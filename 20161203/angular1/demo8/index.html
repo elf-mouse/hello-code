@@ -1,0 +1,54 @@
+<!doctype html>
+<html ng-app="myApp">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Angular Validation</title>
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="/demo/main.css">
+</head>
+
+<body ng-controller="index">
+  <div class="container">
+    <div class="page-header">
+      <form name="Form8" id="form8">
+        <fieldset>
+          <div class="m-b-20">
+            <legend>AngularJs ui-select</legend>
+            <div class="row">
+              <div class="col-xs-12">
+                <label>Required, Selected: {{form8.country.selected}}</label>
+              </div>
+              <div class="col-xs-6">
+                <ui-select ng-model="form8.country.selected" theme="bootstrap" ng-disabled="form8.disabled" style="width: 100%;" validator="required" message-id="ui-select">
+                  <ui-select-match placeholder="Select or search a country in the list...">{{$select.selected.name}}</ui-select-match>
+                  <ui-select-choices repeat="country in form8.countries" refresh-delay="0">
+                    <span ng-bind-html="country.name"></span>
+                    <small ng-bind-html="country.code"></small>
+                  </ui-select-choices>
+                </ui-select>
+                <br/>
+                <span id="ui-select"></span>
+              </div>
+              <div class="col-xs-4">
+                <button class="btn btn-primary" ng-click="form8.clear()">Clear ng-model</button>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <script src="/node_modules/angular/angular.min.js"></script>
+  <script src="/node_modules/angular-sanitize/angular-sanitize.min.js"></script>
+  <script src="/node_modules/ui-select/dist/select.min.js"></script>
+  <script src="/node_modules/angular-validation/dist/angular-validation.js"></script>
+  <script src="/node_modules/angular-validation/dist/angular-validation-rule.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/controller.js"></script>
+</body>
+
+</html>
