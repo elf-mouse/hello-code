@@ -20,6 +20,10 @@ if ($isLogin) {
         <input type="password" name="password">
     </p>
     <p>
+        <input type="text" name="code">
+        <img id="vode" src="captcha.php" alt="">
+    </p>
+    <p>
         <button type="submit">Submit</button>
     </p>
 </form>

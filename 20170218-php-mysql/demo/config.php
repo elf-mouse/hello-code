@@ -2,8 +2,8 @@
 // 数据库配置
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
-define('DB_PASSWORD', '');
-define('DB_NAME', ''); // 数据库名
+define('DB_PASSWORD', '123456');
+define('DB_NAME', 'test'); // 数据库名
 
 // 项目根目录
 define('ABSPATH', dirname(__FILE__) . '/');
