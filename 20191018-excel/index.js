@@ -16,14 +16,21 @@ oldWorkbook.xlsx
     // Input
     oldWorksheet.eachRow({ includeEmpty: true }, function(row, rowNumber) {
       // console.log("Row " + rowNumber + " = " + JSON.stringify(row.values));
-
       row.eachCell(function(cell, colNumber) {
         // console.log("Cell " + colNumber + " = " + JSON.stringify(cell.value));
         if (colNumber === 7 && typeof cell.value === "object") {
-          let hyperlink = cell.value.hyperlink.replace(
-            /AP%20Filling/,
-            "AP%30Filling"
-          );
+          let hyperlink = cell.value.hyperlink;
+          // console.log(rowNumber, hyperlink);
+
+          let str = hyperlink.substr(0, 5);
+          if (str === "https") {
+            hyperlink = hyperlink.replace("web-mp01", "web-mp04");
+          } else if (str === "../AP") {
+            hyperlink = hyperlink.replace(str, "xxx");
+          } else {
+          }
+
+          // cell.value = hyperlink;
           cell.value = {
             text: cell.value.text,
             hyperlink
